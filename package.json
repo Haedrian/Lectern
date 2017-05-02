@@ -1,0 +1,19 @@
+{
+  "name": "lectern-server",
+  "version": "1.0.0",
+  "description": "An article server of sorts",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Haedrian/Lectern-Server.git"
+  },
+  "author": "Adrian Abela",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Haedrian/Lectern-Server/issues"
+  },
+  "homepage": "https://github.com/Haedrian/Lectern-Server#readme"
+}
