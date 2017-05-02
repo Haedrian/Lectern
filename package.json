@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/Haedrian/Lectern-Server/issues"
   },
-  "homepage": "https://github.com/Haedrian/Lectern-Server#readme"
+  "homepage": "https://github.com/Haedrian/Lectern-Server#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "mongodb": "^2.2.26"
+  }
 }
