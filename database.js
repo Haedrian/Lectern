@@ -2,11 +2,11 @@ var MongoClient = require('mongodb').MongoClient;
 var Settings = require('./settings');
 
 module.exports.getArticles = function (limit, page, query) {
-    return connect(Settings.DB_CONNECTION).then((db) => {
+    return connect().then((db) => {
         if (query) {
-            return db.collections("articles").find({tags: query}).skip(page* limit).limit(limit).toArray();
+            return db.collection("articles").find({ tags: query }, {title: 1, tease: 1, _id: 0, date: 1, lastModified: 1}).skip(page * limit).limit(limit).toArray();
         } else {
-            return db.collections("articles").find({}).skip(page * limit).limit(limit).toArray();
+            return db.collection("articles").find({},{title: 1, tease: 1, _id: 0, date: 1, lastModified: 1}).skip(page * limit).limit(limit).toArray();
         }
     });
 }
@@ -16,7 +16,7 @@ module.exports.getArticles = function (limit, page, query) {
 var db = null;
 function connect() {
     if (db == null) {
-        return MongoClient.connect().then((mc) => {
+        return MongoClient.connect(Settings.DB_CONNECTION).then((mc) => {
             db = mc;
             return Promise.resolve(db);
         })
