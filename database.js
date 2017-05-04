@@ -11,7 +11,11 @@ module.exports.getArticles = function (limit, page, query) {
     });
 }
 
-
+module.exports.getArticle = function(articleName){
+    return connect().then( (db) => {
+        return db.collection("articles").findOne({title: articleName});
+    })
+}
 
 var db = null;
 function connect() {
