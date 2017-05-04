@@ -32,25 +32,22 @@
 		"llamatown"
 	],
 	"links": {
-		"people": {
-			"llamas": [
-				"a",
-				"b",
-				"c"
-			],
-			"jerks": [
-				"d",
-				"e",
-				"f"
-			]
-		},
-		"articles": {
-			"other": [
-				"x",
-				"y",
-				"z"
-			]
-		}
+		"people": [
+			{
+				"name": "Juliet Borg",
+				"category": "accused"
+			},
+			{
+				"name": "Mr Llama",
+				"category": "llama"
+			}
+		],
+		"articles": [
+			{
+				"name": "Something that once happened",
+				"category": "further reading"
+			}
+		]
 	},
 	"date": "2017-01-01",
 	"dateCreated": "2017-02-01",
