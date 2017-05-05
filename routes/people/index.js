@@ -32,7 +32,7 @@ router.route('/people/:name').get((req, res) => {
     })
 });
 
-route.route('/people/:name/articles').get((req, res) => {
+router.route('/people/:name/articles').get((req, res) => {
     let name = req.params.name;
 
     if (!name) {
