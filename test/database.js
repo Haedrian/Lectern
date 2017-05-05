@@ -27,7 +27,7 @@ describe("get articles", () => {
     }).timeout(5000);
 
     it("should order the articles by the descending date", (done) => {
-        database.getArticles(30,0,null).then( (articles) => {
+        database.getArticles(30, 0, null).then((articles) => {
             expect(articles).to.have.lengthOf(2);
             expect(articles[1].lastModified).to.be.lessThan(articles[0].lastModified);
             done();
@@ -51,37 +51,62 @@ describe("get article", () => {
     })
 })
 
-describe("get people", () => 
-{
-    it("should get 3 people", (done) =>
-    {
-        database.getPeople(3,0,null).then( (people) => {
+describe("get people", () => {
+    it("should get 3 people", (done) => {
+        database.getPeople(3, 0, null).then((people) => {
             expect(people).to.have.lengthOf(3);
             done();
         })
     }).timeout(5000);
 
-    it("should perform exact search",(done) =>
-    {
-        database.getPeople(3,0,"Juliet Borg").then( (people) => {
+    it("should perform exact search", (done) => {
+        database.getPeople(3, 0, "Juliet Borg").then((people) => {
             expect(people).to.have.lengthOf(1);
             done();
         })
     }).timeout(5000);
 
-    it("should be case insensitive", (done) =>
-    {
-        database.getPeople(3,0,"juliet borg").then( (people) => {
+    it("should be case insensitive", (done) => {
+        database.getPeople(3, 0, "juliet borg").then((people) => {
             expect(people).to.have.lengthOf(1);
             done();
-        });     
+        });
     }).timeout(5000);
 
-    it("should do partial matches", (done) =>
-    {
-        database.getPeople(3,0,"borg").then( (people) => {
+    it("should do partial matches", (done) => {
+        database.getPeople(3, 0, "borg").then((people) => {
             expect(people).to.have.lengthOf(1);
             done();
         })
     }).timeout(5000);
+
+    it("should find nobody", (done) => {
+        database.getPeople(3, 0, "nobody").then((people) => {
+            expect(people).to.have.lengthOf(0);
+            done();
+        })
+    })
+});
+
+describe("getArticlesByPerson", (done) => {
+    it("gets all of Juliet Borgs' articles", () => {
+        database.getArticlesByPerson(10, 0, "Juliet Borg").then((art) => {
+            expect(art).to.have.lengthOf(2);
+            done();
+        });
+    });
+
+    it("gets all of Mr Llama's articles", () => {
+        database.getArticlesByPerson(10, 0, "Mr Llama").then((art) => {
+            expect(art).to.have.lengthOf(1);
+            done();
+        });
+    });
+
+    it("gets no articles as they have none", () => {
+        database.getArticlesByPerson(10, 0, "I dont exist").then((art) => {
+            expect(art).to.have.lengthOf(0);
+            done();
+        });
+    });
 });

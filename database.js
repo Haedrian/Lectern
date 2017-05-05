@@ -34,6 +34,16 @@ module.exports.getPerson = function(name){
     })
 }
 
+/**
+ * Gets articles which have something to do with a person. Doesn't consider their role exactly
+ */
+module.exports.getArticlesByPerson = function(limit,page,name){
+    return connect().then( (db) => {
+        return db.collection("articles").find({"links.people.name": name},
+         {title: 1, tease: 1, _id: 0, date: 1, lastModified: 1}).sort({lastModified: -1}).skip(page * limit).limit(limit).toArray();
+    });
+}
+
 var db = null;
 function connect() {
     if (db == null) {
