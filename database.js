@@ -17,6 +17,7 @@ module.exports.getArticle = function(articleName){
     })
 }
 
+
 var db = null;
 function connect() {
     if (db == null) {

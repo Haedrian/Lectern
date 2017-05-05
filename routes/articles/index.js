@@ -14,6 +14,23 @@ router.route('/articles').get((req, res) => {
             res.send(articles);
         }
     })
+});
+
+router.route('/articles/:name').get((req, res) => {
+    let name = req.params.name;
+
+    if (!name) {
+        res.send(400);
+    }
+    else {
+        return database.getArticle(name).then((a) => {
+            if (a) {
+                res.send(a);
+            } else {
+                res.send(404);
+            }
+        })
+    }
 })
 
 module.exports = router;
