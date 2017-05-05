@@ -34,12 +34,13 @@ router.route('/people/:name').get((req, res) => {
 
 router.route('/people/:name/articles').get((req, res) => {
     let name = req.params.name;
+    let page = req.query.page | 0;
 
     if (!name) {
         res.sendStatus(400);
     }
 
-    return database.getArticlesByPerson(name).then((pep) => {
+    return database.getArticlesByPerson(20,page,name).then((pep) => {
         if (pep.length == 0) {
             res.sendStatus(404);
         } else {
