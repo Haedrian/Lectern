@@ -25,6 +25,14 @@ describe("get articles", () => {
             done();
         })
     }).timeout(5000);
+
+    it("should order the articles by the descending date", (done) => {
+        database.getArticles(30,0,null).then( (articles) => {
+            expect(articles).to.have.lengthOf(2);
+            expect(articles[1].lastModified).to.be.lessThan(articles[0].lastModified);
+            done();
+        })
+    })
 });
 
 describe("get article", () => {

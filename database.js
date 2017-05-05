@@ -4,9 +4,9 @@ var Settings = require('./settings');
 module.exports.getArticles = function (limit, page, query) {
     return connect().then((db) => {
         if (query) {
-            return db.collection("articles").find({ tags: query }, {title: 1, tease: 1, _id: 0, date: 1, lastModified: 1}).skip(page * limit).limit(limit).toArray();
+            return db.collection("articles").find({ tags: query }, {title: 1, tease: 1, _id: 0, date: 1, lastModified: 1}).sort({lastModified: -1}).skip(page * limit).limit(limit).toArray();
         } else {
-            return db.collection("articles").find({},{title: 1, tease: 1, _id: 0, date: 1, lastModified: 1}).skip(page * limit).limit(limit).toArray();
+            return db.collection("articles").find({},{title: 1, tease: 1, _id: 0, date: 1, lastModified: 1}).skip(page * limit).limit(limit).sort({lastModified:-1}).toArray();
         }
     });
 }
