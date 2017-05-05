@@ -12,3 +12,4 @@ app.listen(Settings.API_PORT, () => {
 })
 
 app.use('/api',require('./routes/articles/index'));
+app.use('/api',require('./routes/people/index'));

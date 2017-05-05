@@ -17,6 +17,22 @@ module.exports.getArticle = function(articleName){
     })
 }
 
+module.exports.getPeople = function(limit,page,query){
+    return connect().then( (db) => {
+        if (query)
+        {
+            return db.collection("people").find({$text: {$search: query, $caseSensitive: false}},{_id:0, score: { $meta: "textScore"}}).sort({ score: { $meta: "textScore" } }).skip(page*limit).limit(limit).toArray();
+        } else{
+            return db.collection("people").find({},{_id:0}).sort({name: 1}).skip(page*limit).limit(limit).toArray();
+        }
+    })
+}
+
+module.exports.getPerson = function(name){
+    return connect().then( (db) => {
+        return db.collection("people").findOne({$text: {$search: name, $caseSensitive: false}}, {_id:0});
+    })
+}
 
 var db = null;
 function connect() {

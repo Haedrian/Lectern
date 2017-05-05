@@ -1,0 +1,15 @@
+{
+    "name": "Juliet Borg",
+    "about": "The leader of the llama party",
+    "icon": "foo.png"
+}
+{
+    "name": "Monrad Kizzi",
+    "about": "Juliet's Bestie",
+    "icon": "fee.png"
+}
+{
+    "name": "Alan Turing",
+    "about": "He does clever stuff",
+    "icon": "bar.png"
+}

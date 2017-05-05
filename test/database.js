@@ -50,3 +50,38 @@ describe("get article", () => {
         })
     })
 })
+
+describe("get people", () => 
+{
+    it("should get 3 people", (done) =>
+    {
+        database.getPeople(3,0,null).then( (people) => {
+            expect(people).to.have.lengthOf(3);
+            done();
+        })
+    }).timeout(5000);
+
+    it("should perform exact search",(done) =>
+    {
+        database.getPeople(3,0,"Juliet Borg").then( (people) => {
+            expect(people).to.have.lengthOf(1);
+            done();
+        })
+    }).timeout(5000);
+
+    it("should be case insensitive", (done) =>
+    {
+        database.getPeople(3,0,"juliet borg").then( (people) => {
+            expect(people).to.have.lengthOf(1);
+            done();
+        });     
+    }).timeout(5000);
+
+    it("should do partial matches", (done) =>
+    {
+        database.getPeople(3,0,"borg").then( (people) => {
+            expect(people).to.have.lengthOf(1);
+            done();
+        })
+    }).timeout(5000);
+});
