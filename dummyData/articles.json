@@ -49,7 +49,59 @@
 			}
 		]
 	},
-	"date": "2017-01-01",
-	"dateCreated": "2017-02-01",
-	"lastModified": "2017-03-01"
+	"date": ISODate("2017-01-01"),
+	"dateCreated": ISODate("2017-02-01"),
+	"lastModified": ISODate("2017-03-01")
+}
+{
+	"title": "Dummy Article 2",
+	"tease": "Are you feeling teased yet?",
+	"sections": [
+		{
+			"title": "Background",
+			"content": "Dummy",
+			"references": [
+				{
+					"name": "Llamas are awesome",
+					"source": "Llama News Network",
+					"url": "http://www.example.com"
+				}
+			]
+		},
+		{
+			"title": "Conclusion",
+			"content": "Llamas are still awesome creatures",
+			"references": [
+				{
+					"name": "Llamas are still awesome",
+					"source": "Llama News Network",
+					"url": "http://www.example.com/awesome"
+				}
+			]
+		}
+	],
+	"tags": [
+		"atag"
+	],
+	"links": {
+		"people": [
+			{
+				"name": "Juliet Borg",
+				"category": "accused"
+			},
+			{
+				"name": "Mr Llama",
+				"category": "llama"
+			}
+		],
+		"articles": [
+			{
+				"name": "Something that once happened",
+				"category": "further reading"
+			}
+		]
+	},
+	"date": ISODate("2017-01-03"),
+	"dateCreated": ISODate("2017-02-01"),
+	"lastModified": ISODate("2017-03-02")
 }
