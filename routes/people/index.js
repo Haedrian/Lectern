@@ -40,13 +40,9 @@ router.route('/people/:name/articles').get((req, res) => {
         res.sendStatus(400);
     }
 
-    return database.getArticlesByPerson(20,page,name).then((pep) => {
-        if (pep.length == 0) {
-            res.sendStatus(404);
-        } else {
-            res.send(pep);
-        }
-    })
+    return database.getArticlesByPerson(20, page, name).then((pep) => {
+        res.send(pep);
+    });
 });
 
 module.exports = router;
