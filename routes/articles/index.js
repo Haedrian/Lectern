@@ -8,11 +8,14 @@ router.route('/articles').get((req, res) => {
     let page = req.query.page | 0;
 
     return database.getArticles(30, page, query).then((articles) => {
-        if (articles.length == 0) {
-            res.sendStatus(404);
-        } else {
-            res.send(articles);
-        }
+        res.send(articles);
+    })
+});
+
+router.route("/articles/count").get((req, res) => {
+    let query = req.query.query;
+    return database.getArticleCounts(query).then((total) => {
+        res.send(total + "");
     })
 });
 
